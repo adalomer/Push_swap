@@ -67,7 +67,13 @@ int main(int argc , char **argv)
     s_a* a =NULL;
     while(b--> 0)
         ft_createnode(&a,ft_atoi(argv[d++]));
-    
+    ft_sa(&a);
+    b = argc-1;
+    for(int i = 0;i<b;i++)
+    {
+        printf("%d\n",a->data);
+        a = a->next;
+    }
     
     return(0);
 }
