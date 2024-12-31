@@ -4,10 +4,10 @@
 #include "push_swap.h"
 
 
-void    ft_deletenode(s_a **head, int value)
+void    ft_deletenode(t_stack **head, int value)
 {
-    s_a *current = *head;
-    s_a *prev = NULL;
+    t_stack *current = *head;
+    t_stack *prev = NULL;
 
     while(current != NULL)
     {
@@ -34,9 +34,9 @@ void    ft_deletenode(s_a **head, int value)
     }
 }
 
-void ft_createnode(s_a **a, int value) 
+void ft_createnode(t_stack **a, int value) 
 {
-    s_a *new_node = (s_a *)malloc(sizeof(s_a));
+    t_stack *new_node = (t_stack *)malloc(sizeof(t_stack));
     if (new_node == NULL) {
         printf("Bellek tahsisi başarısız.\n");
         return;
@@ -52,7 +52,7 @@ void ft_createnode(s_a **a, int value)
     } 
     else 
     {  // Listenin sonuna ekleme
-        s_a *current = *a;
+        t_stack *current = *a;
         while (current->next != NULL)
             current = current->next;
 
@@ -64,15 +64,33 @@ int main(int argc , char **argv)
 {
     int b = argc - 1;
     int d = 1;
-    s_a* a =NULL;
+    t_stack* a =NULL;
+    t_stack* g = NULL;
     while(b--> 0)
         ft_createnode(&a,ft_atoi(argv[d++]));
-    ft_sa(&a);
+    ft_pbpa(&g,&a,2);
+    ft_pbpa(&g,&a,2);
+    ft_pbpa(&g,&a,2);
+    ft_rrarrb(&a,1);
+    ft_rrr(&a,&g);
+    ft_pbpa(&a,&g,1);
+    ft_pbpa(&a,&g,1);
+    ft_sasb(&g,2);
+    ft_pbpa(&g,&a,2);
+    ft_sasb(&g,2);
+    ft_pbpa(&g,&a,2);
+    ft_pbpa(&g,&a,2);
     b = argc-1;
-    for(int i = 0;i<b;i++)
+    while (a)
     {
         printf("%d\n",a->data);
         a = a->next;
+    }
+    while(g)
+    {
+        printf("*********");
+        printf("%d\n",g->data);
+        g =g->next;
     }
     
     return(0);

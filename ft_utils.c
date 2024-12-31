@@ -1,4 +1,6 @@
 #include "push_swap.h"
+#include <stdlib.h>
+#include <unistd.h>
 
 int		ft_atoi(const char *str)
 {
@@ -26,8 +28,32 @@ int		ft_atoi(const char *str)
 	return (num * neg);
 }
 
-// //int ft_checkrepeat(t_a **head)
-// {
-// 	t_a *current = *head;
+char *ft_error(t_stack **head)
+{
+	t_stack* swap = (*head);
+	while((*head) != NULL)
+	{
+		(*head) = (*head)->next;
+		free(swap);
+		swap = *(head);
+	}
+	write(1,"ERROR\n",6);
+	break;
+}
+void ft_checkrepeat(t_a **head,int argc)
+{
+	t_stack *current = *head;
+	t_stack *check = *head->next;
 
-// }
+	while(current)
+	{
+		while(check)
+		{
+			if(current->data == check->data)
+				ft_error(&head);
+			check = check->next;
+		}
+		current = current->next;
+		check = current->next->next;
+	}
+}

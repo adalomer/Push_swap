@@ -1,18 +1,18 @@
 #ifndef PUSH_SWAP_H
 #define PUSH_SWAP_H
 
-typedef struct t_a {
+typedef struct s_stack {
     int data;
-    struct t_a* next;
-} s_a;
-typedef struct t_b {
-    int data;
-    struct t_b* next;
-} s_b;
-
+    struct s_stack* next;
+} t_stack;
 
 int		ft_atoi(const char *str);
-void ft_createnode(s_a **a, int value);
-void ft_sa(s_a **head);
+void ft_createnode(t_stack **a, int value);
+void ft_sasb(t_stack **headi, int i);
+void ft_pbpa(t_stack **heada, t_stack **headb, int i);
+void ft_rarb(t_stack **head, int i);
+void    ft_rrarrb(t_stack **head, int i);
+void    ft_rrr(t_stack** heada, t_stack** headb);
+void    ft_rr(t_stack** heada,t_stack** headb);
 
 #endif
