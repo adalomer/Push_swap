@@ -28,7 +28,7 @@ int		ft_atoi(const char *str)
 	return (num * neg);
 }
 
-char *ft_error(t_stack **head)
+void	ft_error(t_stack **head)
 {
 	t_stack* swap = (*head);
 	while((*head) != NULL)
@@ -38,22 +38,29 @@ char *ft_error(t_stack **head)
 		swap = *(head);
 	}
 	write(1,"ERROR\n",6);
-	break;
+	return;
 }
-void ft_checkrepeat(t_a **head,int argc)
+void ft_checkrepeat(t_stack **head)
 {
 	t_stack *current = *head;
-	t_stack *check = *head->next;
+	t_stack *check = (*head)->next;
 
 	while(current)
 	{
 		while(check)
 		{
 			if(current->data == check->data)
-				ft_error(&head);
+			{
+				ft_error(head);
+				return;
+			}
 			check = check->next;
 		}
+		if(current->next == NULL )
+			return;
 		current = current->next;
-		check = current->next->next;
+		check = current->next;
 	}
 }
+
+

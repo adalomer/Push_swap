@@ -7,7 +7,12 @@ typedef struct s_stack {
 } t_stack;
 
 int		ft_atoi(const char *str);
+
+
 void ft_createnode(t_stack **a, int value);
+void ft_checkrepeat(t_stack **head);
+
+
 void ft_sasb(t_stack **headi, int i);
 void ft_pbpa(t_stack **heada, t_stack **headb, int i);
 void ft_rarb(t_stack **head, int i);

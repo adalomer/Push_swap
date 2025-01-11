@@ -68,19 +68,22 @@ int main(int argc , char **argv)
     t_stack* g = NULL;
     while(b--> 0)
         ft_createnode(&a,ft_atoi(argv[d++]));
-    ft_pbpa(&g,&a,2);
-    ft_pbpa(&g,&a,2);
-    ft_pbpa(&g,&a,2);
-    ft_rrarrb(&a,1);
-    ft_rrr(&a,&g);
-    ft_pbpa(&a,&g,1);
-    ft_pbpa(&a,&g,1);
-    ft_sasb(&g,2);
-    ft_pbpa(&g,&a,2);
-    ft_sasb(&g,2);
-    ft_pbpa(&g,&a,2);
-    ft_pbpa(&g,&a,2);
+    //ft_pbpa(&a,&g,1);
+    //ft_pbpa(&a,&g,1);
+    //ft_pbpa(&a,&g,1);
+    //ft_pbpa(&g,&a,2);
+    // ft_rrarrb(&a,1);
+    // ft_rrr(&a,&g);
+    // ft_pbpa(&a,&g,1);
+    // ft_pbpa(&a,&g,1);
+    // ft_sasb(&g,2);
+    // ft_pbpa(&g,&a,2);
+    // ft_sasb(&g,2);
+    // ft_pbpa(&g,&a,2);
+    // ft_pbpa(&g,&a,2);
     b = argc-1;
+    ft_checkrepeat(&a);
+    
     while (a)
     {
         printf("%d\n",a->data);
