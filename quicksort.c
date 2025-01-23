@@ -51,7 +51,6 @@ void ft_recursive_sort(t_stack **a, t_stack **b, int len)
 {
     int pb_count = 0;
     int ra_count = 0;
-    t_stack *temp;
     int i = 0;
     int pivot;
 
@@ -60,11 +59,21 @@ void ft_recursive_sort(t_stack **a, t_stack **b, int len)
         if (len == 2 && (*a)->index > (*a)->next->index)
             ft_sa(a);
         else if (len == 3)
-            ft_sort_three(a);
+        {
+            // Daha detaylı kontrol ekleniyor
+            if (is_sorted_order(a, 1, 2, 3))
+                return;
+            if (is_sorted_order(a, 3, 1, 2) || is_sorted_order(a, 3, 2, 1))
+                ft_sort_top_three_asc(a); // İlk 3 eleman sıralanıyor
+            else
+                ft_sort_three_asc(a); // Tüm 3 eleman sıralanıyor
+        }
         return;
     }
-    pivot = pivotfinder(a,len);
-    int push_c = len / 2 ;
+
+    pivot = pivotfinder(a, len);
+    int push_c = len / 2;
+
     while (i < len && push_c)
     {
         if ((*a)->index < pivot && push_c--)
@@ -79,15 +88,18 @@ void ft_recursive_sort(t_stack **a, t_stack **b, int len)
         }
         i++;
     }
+
     while (ra_count--) 
         ft_rra(a);
+
     ft_recursive_sort(a, b, len - pb_count); // Pivot üstü (stack_a'da kalanlar)
     int push_a = pb_count;
-    while (pb_count--) {
+    while (pb_count--) 
         ft_pa(a, b);
-    }
-    ft_recursive_sort(a, b, push_a  + (len / 2 ) % 2);      // Pivot altı (stack_b'ye gidenler)
+
+    ft_recursive_sort(a, b, push_a + (len / 2) % 2); // Pivot altı (stack_b'ye gidenler)
 }
+
 
 void ft_quick_sort(t_stack **a, t_stack **b, int len)
 {
@@ -119,16 +131,17 @@ void ft_quick_sort(t_stack **a, t_stack **b, int len)
     }
     ft_recursive_sort(a,b,len);
 }
-void ft_sort_three(t_stack **a) {
-    if ((*a)->index > (*a)->next->index && (*a)->index > (*a)->next->next->index) {
+void ft_sort_three(t_stack **a)
+{
+    if ((*a)->index > (*a)->next->index && (*a)->index > (*a)->next->next->index)
+    {
         ft_ra(a);
         if ((*a)->index > (*a)->next->index)
             ft_sa(a);
-    } else if ((*a)->index > (*a)->next->index) {
+    } else if ((*a)->index > (*a)->next->index)
         ft_sa(a);
-    } else if ((*a)->next->index > (*a)->next->next->index) {
+    else if ((*a)->next->index > (*a)->next->next->index) 
         ft_rra(a);
         if ((*a)->index > (*a)->next->index)
             ft_sa(a);
-    }
 }
