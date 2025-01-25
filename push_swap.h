@@ -31,13 +31,9 @@ void    ft_rrb(t_stack **b);
 void    ft_rrr(t_stack **a, t_stack **b);
 
 // Sıralama Algoritması
-void    ft_quick_sort(t_stack **a, t_stack **b, int len);
-void    ft_recursive_sort(t_stack **a, t_stack **b, int len); // **DEĞİŞTİ:** ft_recursive_sort eklendi
-void    ft_sort_three(t_stack **a); // **YENİ:** 3 eleman için sıralama
-void ft_sort_top_three_asc(t_stack **a);
-void ft_sort_three_asc(t_stack **a);
-void ft_sort_top_three_desc(t_stack **b);
-int is_sorted_order(t_stack **s, int a, int b, int c);
+
+void ft_radix_sort(t_stack **a, t_stack **b, int size);
+int find_min_position(t_stack *a);
 // Debug için (silinebilir)
 void    print_list(t_stack *head, char name);
 
