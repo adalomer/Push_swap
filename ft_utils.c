@@ -37,15 +37,6 @@ int ft_lstsize(t_stack *lst) {
     return (size);
 }
 
-int ft_is_sorted(t_stack *a) {
-    while (a && a->next) {
-        if (a->data > a->next->data)
-            return (0);
-        a = a->next;
-    }
-    return (1);
-}
-
 void ft_error(t_stack **head) {
     t_stack *swap;
     
@@ -59,34 +50,6 @@ void ft_error(t_stack **head) {
     }
     write(2, "Error\n", 6); // Hata mesajı stderr'e yazılmalı
     exit(1);
-}
-void ft_checkrepeat(t_stack **head)
-{
-    t_stack *current;
-    t_stack *check;
-
-    if(head == NULL || (*head) == NULL)
-        return;
-
-    current = *head;
-    check = (*head)->next;
-
-    while(current)
-    {
-        while(check)
-        {
-            if(current->data == check->data)
-            {
-                ft_error(head);
-                return; // ft_error fonksiyonu zaten çıkış yapıyor
-            }
-            check = check->next;
-        }
-        if(current->next == NULL )
-            return;
-        current = current->next;
-        check = current->next;
-    }
 }
 
 void ft_index(t_stack **head) {
@@ -134,13 +97,17 @@ void ft_createnode(t_stack **a, int value)
         current->next = new_node;
     }
 }
-
-// Debug için (silinebilir)
-void print_list(t_stack *head, char name) {
-    printf("Stack %c: ", name);
-    while (head) {
-        printf("%d(%d) ", head->data, head->index);
-        head = head->next;
+void	ft_clear(t_stack **a, t_stack **b)
+{
+	while ((*a)) 
+	{
+        t_stack *temp = (*a);
+        (*a) = (*a)->next;
+        free(temp);
     }
-    printf("\n");
+	while ((*b)) {
+        t_stack *temp = (*b);
+        (*b) = (*b)->next;
+        free(temp);
+    }
 }

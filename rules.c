@@ -30,30 +30,6 @@ void ft_sb(t_stack **b) {
     write(1, "sb\n", 3);
 }
 
-
-void ft_ss(t_stack **a, t_stack **b) {
-    t_stack *top_a;
-    t_stack *next_a;
-    t_stack *top_b;
-    t_stack *next_b;
-
-    if (a && *a && (*a)->next) {
-        top_a = *a;
-        next_a = (*a)->next;
-        top_a->next = next_a->next;
-        next_a->next = top_a;
-        *a = next_a;
-    }
-    if (b && *b && (*b)->next) {
-        top_b = *b;
-        next_b = (*b)->next;
-        top_b->next = next_b->next;
-        next_b->next = top_b;
-        *b = next_b;
-    }
-    write(1, "ss\n", 3);
-}
-
 void ft_pa(t_stack **a, t_stack **b) {
     t_stack *temp;
 

@@ -19,17 +19,7 @@ int main(int argc, char **argv) {
         return (0);
     ft_checkrepeat(&a);
     ft_index(&a);
-    //ft_quick_sort(&a, &b, ft_lstsize(a));
-	ft_radix_sort(&a,&b,ft_lstsize(a));
-    //Debug için (silinebilir)
-    print_list(a, 'a');
-    //print_list(b, 'b');
-
-    // a listesini temizle
-    while (a) {
-        t_stack *temp = a;
-        a = a->next;
-        free(temp);
-    }
+	ft_sort(&a,&b,ft_lstsize(a));
+    ft_clear(&a,&b);
     return (0);
 }

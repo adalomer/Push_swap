@@ -34,33 +34,6 @@ void ft_rb(t_stack **b) {
     write(1, "rb\n", 3);
 }
 
-void ft_rr(t_stack **a, t_stack **b) {
-    t_stack *first_a;
-    t_stack *last_a;
-    t_stack *first_b;
-    t_stack *last_b;
-
-    if (a && *a && (*a)->next) {
-        first_a = *a;
-        last_a = *a;
-        *a = (*a)->next;
-        while (last_a->next)
-            last_a = last_a->next;
-        last_a->next = first_a;
-        first_a->next = NULL;
-    }
-    if (b && *b && (*b)->next) {
-        first_b = *b;
-        last_b = *b;
-        *b = (*b)->next;
-        while (last_b->next)
-            last_b = last_b->next;
-        last_b->next = first_b;
-        first_b->next = NULL;
-    }
-    write(1, "rr\n", 3);
-}
-
 void ft_rra(t_stack **a) {
     t_stack *last;
     t_stack *before_last;
