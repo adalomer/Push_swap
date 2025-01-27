@@ -2,7 +2,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-void ft_sa(t_stack **a) {
+void ft_sa(t_stack **a)
+{
     t_stack *top;
     t_stack *next;
 
@@ -16,7 +17,8 @@ void ft_sa(t_stack **a) {
     write(1, "sa\n", 3);
 }
 
-void ft_sb(t_stack **b) {
+void ft_sb(t_stack **b)
+{
     t_stack *top;
     t_stack *next;
 
@@ -30,7 +32,8 @@ void ft_sb(t_stack **b) {
     write(1, "sb\n", 3);
 }
 
-void ft_pa(t_stack **a, t_stack **b) {
+void ft_pa(t_stack **a, t_stack **b)
+{
     t_stack *temp;
 
     if (!b || !(*b))
@@ -42,7 +45,8 @@ void ft_pa(t_stack **a, t_stack **b) {
     write(1, "pa\n", 3);
 }
 
-void ft_pb(t_stack **a, t_stack **b) {
+void ft_pb(t_stack **a, t_stack **b)
+{
     t_stack *temp;
 
     if (!a || !(*a))

@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: omadali <adalomer60@gmail.com>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/26 01:35:09 by omadali           #+#    #+#             */
+/*   Updated: 2025/01/26 01:35:22 by omadali          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 #include <unistd.h>
 #include <stdlib.h>
-#include <stdio.h> // Sadece debug için, silinebilir
 
-int ft_atoi(const char *str) {
-    int neg;
-    int i;
-    int num;
+int	ft_atoi(const char *str)
+{
+    int	neg;
+    int	i;
+    int	num;
 
     i = 0;
     neg = 1;
@@ -26,7 +38,8 @@ int ft_atoi(const char *str) {
     return (num * neg);
 }
 
-int ft_lstsize(t_stack *lst) {
+int ft_lstsize(t_stack *lst)
+{
     int size;
 
     size = 0;
@@ -37,7 +50,8 @@ int ft_lstsize(t_stack *lst) {
     return (size);
 }
 
-void ft_error(t_stack **head) {
+void ft_error(t_stack **head)
+{
     t_stack *swap;
     
     if(head == NULL)
@@ -48,11 +62,12 @@ void ft_error(t_stack **head) {
         free(swap);
         swap = *(head);
     }
-    write(2, "Error\n", 6); // Hata mesajı stderr'e yazılmalı
+    write(2, "Error\n", 6);
     exit(1);
 }
 
-void ft_index(t_stack **head) {
+void ft_index(t_stack **head)
+{
     t_stack *current;
     t_stack *temp;
     int     index;
@@ -72,42 +87,4 @@ void ft_index(t_stack **head) {
         current = current->next;
     }
 }
-void ft_createnode(t_stack **a, int value) 
-{
-    t_stack *new_node = (t_stack *)malloc(sizeof(t_stack));
-    if (new_node == NULL) {
-        printf("Bellek tahsisi başarısız.\n");
-        return;
-    }
 
-    new_node->data = value;
-    new_node->next = NULL;
-
-    if (*a == NULL) 
-    {  // İlk düğüm ekleniyorsa
-        new_node->next = NULL;
-        *a = new_node;
-    } 
-    else 
-    {  // Listenin sonuna ekleme
-        t_stack *current = *a;
-        while (current->next != NULL)
-            current = current->next;
-
-        current->next = new_node;
-    }
-}
-void	ft_clear(t_stack **a, t_stack **b)
-{
-	while ((*a)) 
-	{
-        t_stack *temp = (*a);
-        (*a) = (*a)->next;
-        free(temp);
-    }
-	while ((*b)) {
-        t_stack *temp = (*b);
-        (*b) = (*b)->next;
-        free(temp);
-    }
-}

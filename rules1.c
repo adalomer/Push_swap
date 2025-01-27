@@ -2,7 +2,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-void ft_ra(t_stack **a) {
+void ft_ra(t_stack **a)
+{
     t_stack *first;
     t_stack *last;
 
@@ -18,7 +19,8 @@ void ft_ra(t_stack **a) {
     write(1, "ra\n", 3);
 }
 
-void ft_rb(t_stack **b) {
+void ft_rb(t_stack **b)
+{
     t_stack *first;
     t_stack *last;
 
@@ -34,7 +36,8 @@ void ft_rb(t_stack **b) {
     write(1, "rb\n", 3);
 }
 
-void ft_rra(t_stack **a) {
+void ft_rra(t_stack **a)
+{
     t_stack *last;
     t_stack *before_last;
 
@@ -52,7 +55,8 @@ void ft_rra(t_stack **a) {
     write(1, "rra\n", 4);
 }
 
-void ft_rrb(t_stack **b) {
+void ft_rrb(t_stack **b)
+{
     t_stack *last;
     t_stack *before_last;
 
