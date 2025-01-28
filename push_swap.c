@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: omadali <adalomer60@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 01:36:10 by omadali           #+#    #+#             */
-/*   Updated: 2025/01/28 01:44:24 by omadali          ###   ########.fr       */
+/*   Updated: 2025/01/29 00:08:02 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 #include <unistd.h>
 
 
-void ft_createnode(t_stack **a, int value) 
+int ft_createnode(t_stack **a, int value) 
 {
     t_stack *new_node = (t_stack *)malloc(sizeof(t_stack));
     if (new_node == NULL)
 	{
         write(2,"error",6);
-        return;
+        return (0);
     }
 
     new_node->data = value;
@@ -41,6 +41,7 @@ void ft_createnode(t_stack **a, int value)
 
         current->next = new_node;
     }
+	return(1);
 }
 
 void	ft_clear(t_stack **a, t_stack **b)
@@ -57,7 +58,6 @@ void	ft_clear(t_stack **a, t_stack **b)
         free(temp);
     }
 }
-// String array'i serbest bırakır
 void ft_free_split(char **split)
 {
     int i;
@@ -92,19 +92,18 @@ int ft_is_numeric(char *str)
     return (1);
 }
 
-// Stringi uzun bir sayıya çevirir ve aynı zamanda taşma kontrolü yapar
+// Stringi uzun bir sayıya çevirir ve taşma kontrolü yapar
 int ft_is_valid_int(char *str)
 {
-    int i;
     long result;
     int sign;
+    int i;
 
     if (!ft_is_numeric(str))
         return (0);
-
-    i = 0;
     result = 0;
     sign = 1;
+    i = 0;
     if (str[i] == '-' || str[i] == '+')
     {
         if (str[i] == '-')
@@ -148,57 +147,60 @@ int ft_has_duplicates(t_stack *stack)
     return (0);
 }
 
+// Argümanları doğrular ve stack'i doldurur
+int ft_validate_and_fill_stack(int argc, char **argv, t_stack **a)
+{
+    int i, j;
+    char **split;
+
+    i = 1;
+    while (i < argc)
+    {
+        split = ft_split(argv[i], ' ');
+        if (!split)
+            return (ft_put_error(),clear(a,NULL),1);
+        j = 0;
+        while (split[j])
+        {
+            if (!ft_is_valid_int(split[j]))
+            {
+                ft_put_error();
+                ft_free_split(split);
+				ft_clear(a,NULL);
+                return (1);
+            }
+            ft_createnode(a, ft_atoi(split[j]));
+            j++;
+        }
+        ft_free_split(split);
+        i++;
+    }
+    if (ft_has_duplicates(*a))
+    {
+        ft_put_error();
+        ft_clear(a, NULL);
+        return (1);
+    }
+    return (0);
+}
+
 int main(int argc, char **argv)
 {
-    int     i;
     t_stack *a;
     t_stack *b;
-    char    **str;
 
     a = NULL;
     b = NULL;
     if (argc < 2)
         return (0);
-
-    str = ft_split_args(argc, argv);
-    if (!str || !*str)
-    {
-        ft_free_split(str);
-        return (0);
-    }
-
-    i = 0;
-    while (str[i])
-    {
-        if (!ft_is_numeric(str[i]) || !ft_is_valid_int(str[i]))
-        {
-            ft_free_split(str);
-            ft_put_error();
-            return (1);
-        }
-        ft_createnode(&a, ft_atoi(str[i]));
-        i++;
-    }
-
-    if (ft_has_duplicates(a))
-    {
-        ft_free_split(str);
-        ft_put_error();
-        ft_clear(&a, &b);
+    if (ft_validate_and_fill_stack(argc, argv, &a))
         return (1);
-    }
-
-    if (ft_is_sorted(a))
+    if (!ft_is_sorted(a))
     {
-        ft_free_split(str);
-        ft_clear(&a, &b);
-        return (0);
+        ft_index(&a);
+        ft_sort(&a, &b, ft_lstsize(a));
     }
-
-    ft_index(&a);
-    ft_sort(&a, &b, ft_lstsize(a));
-
-    ft_free_split(str);
     ft_clear(&a, &b);
     return (0);
 }
+
