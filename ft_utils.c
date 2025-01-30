@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 01:35:09 by omadali           #+#    #+#             */
-/*   Updated: 2025/01/30 23:34:01 by omadali          ###   ########.fr       */
+/*   Updated: 2025/01/31 00:28:42 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,87 +16,95 @@
 
 int	ft_atoi(const char *str)
 {
-    int	neg;
-    int	i;
-    int	num;
+	int	neg;
+	int	i;
+	int	num;
 
-    i = 0;
-    neg = 1;
-    num = 0;
-    while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\v'
-           || str[i] == '\f' || str[i] == '\r')
-        i++;
-    if (str[i] == '-' || str[i] == '+') {
-        if (str[i] == '-')
-            neg *= -1;
-        i++;
-    }
-    while (str[i] >= 48 && str[i] <= 57) {
-        num = num * 10 + (str[i] - 48);
-        i++;
-    }
-    return (num * neg);
+	i = 0;
+	neg = 1;
+	num = 0;
+	while (str[i] == ' ' || (str[i] > 9 && str[i] < 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			neg *= -1;
+		i++;
+	}
+	while (str[i] >= 48 && str[i] <= 57)
+	{
+		num = num * 10 + (str[i] - 48);
+		i++;
+	}
+	return (num * neg);
 }
 
-int ft_lstsize(t_stack *lst)
+int	ft_lstsize(t_stack *lst)
 {
-    int size;
+	int	size;
 
-    size = 0;
-    while (lst) {
-        size++;
-        lst = lst->next;
-    }
-    return (size);
+	size = 0;
+	while (lst)
+	{
+		size++;
+		lst = lst->next;
+	}
+	return (size);
 }
 
-void ft_error(t_stack **head)
+void	ft_error(t_stack **head)
 {
-    t_stack *swap;
-    
-    if(head == NULL)
-      return;
-    swap = (*head);
-    while ((*head) != NULL) {
-        (*head) = (*head)->next;
-        free(swap);
-        swap = *(head);
-    }
-    write(2, "Error\n", 6);
-    exit(1);
+	t_stack	*swap;
+
+	if (!head)
+		return ;
+	swap = (*head);
+	while ((*head) != NULL)
+	{
+		(*head) = (*head)->next;
+		free(swap);
+		swap = (*head);
+	}
+	write(2, "Error\n", 6);
+	exit(1);
 }
 
-void ft_index(t_stack **head)
+void	ft_index(t_stack **head)
 {
-    t_stack *current;
-    t_stack *temp;
-    int     index;
-	
-    current = *head;
-    while (current) {
-        index = 0;
-        temp = *head;
-        while (temp) {
-            if (current->data > temp->data)
-                index++;
-            temp = temp->next;
-        }
-        current->index = index;
-        current = current->next;
-    }
+	t_stack	*current;
+	t_stack	*temp;
+	int		index;
+
+	current = *head;
+	while (current)
+	{
+		index = 0;
+		temp = *head;
+		while (temp)
+		{
+			if (current->data > temp->data)
+				index++;
+			temp = temp->next;
+		}
+		current->index = index;
+		current = current->next;
+	}
 }
 
 void	ft_clear(t_stack **a, t_stack **b)
 {
-	while ((*a)) 
+	t_stack	*temp;
+
+	while (*a)
 	{
-        t_stack *temp = (*a);
-        (*a) = (*a)->next;
-        free(temp);
-    }
-	while ((*b)) {
-        t_stack *temp = (*b);
-        (*b) = (*b)->next;
-        free(temp);
-    }
+		temp = (*a);
+		(*a) = (*a)->next;
+		free(temp);
+	}
+	while (*b)
+	{
+		temp = (*b);
+		(*b) = (*b)->next;
+		free(temp);
+	}
 }
