@@ -6,7 +6,7 @@
 /*   By: omadali <adalomer60@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 01:35:09 by omadali           #+#    #+#             */
-/*   Updated: 2025/01/26 01:35:22 by omadali          ###   ########.fr       */
+/*   Updated: 2025/01/30 03:36:32 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,7 @@ void ft_index(t_stack **head)
     t_stack *current;
     t_stack *temp;
     int     index;
-    int     size;
-
-    size = ft_lstsize(*head);
+	
     current = *head;
     while (current) {
         index = 0;

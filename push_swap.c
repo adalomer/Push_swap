@@ -6,7 +6,7 @@
 /*   By: omadali <adalomer60@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 01:36:10 by omadali           #+#    #+#             */
-/*   Updated: 2025/01/29 00:08:02 by omadali          ###   ########.fr       */
+/*   Updated: 2025/01/30 03:40:32 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void ft_free_split(char **split)
     free(split);
 }
 
-// Bir stringin sadece sayılardan oluşup oluşmadığını kontrol eder
 int ft_is_numeric(char *str)
 {
     int i;
@@ -92,7 +91,6 @@ int ft_is_numeric(char *str)
     return (1);
 }
 
-// Stringi uzun bir sayıya çevirir ve taşma kontrolü yapar
 int ft_is_valid_int(char *str)
 {
     long result;
@@ -120,13 +118,11 @@ int ft_is_valid_int(char *str)
     return (1);
 }
 
-// Hata mesajı yazdırır
 void ft_put_error(void)
 {
     write(2, "Error\n", 6);
 }
 
-// Tekrar eden değerlerin olup olmadığını kontrol eder
 int ft_has_duplicates(t_stack *stack)
 {
     t_stack *current;
@@ -147,7 +143,6 @@ int ft_has_duplicates(t_stack *stack)
     return (0);
 }
 
-// Argümanları doğrular ve stack'i doldurur
 int ft_validate_and_fill_stack(int argc, char **argv, t_stack **a)
 {
     int i, j;
@@ -158,7 +153,7 @@ int ft_validate_and_fill_stack(int argc, char **argv, t_stack **a)
     {
         split = ft_split(argv[i], ' ');
         if (!split)
-            return (ft_put_error(),clear(a,NULL),1);
+            return (ft_put_error(),ft_clear(a,NULL),1);
         j = 0;
         while (split[j])
         {
