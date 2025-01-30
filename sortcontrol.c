@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sortcontrol.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omadali <adalomer60@gmail.com>             +#+  +:+       +#+        */
+/*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 03:38:10 by omadali           #+#    #+#             */
-/*   Updated: 2025/01/30 03:38:10 by omadali          ###   ########.fr       */
+/*   Updated: 2025/01/30 23:32:04 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void ft_checkrepeat(t_stack **head)
             if(current->data == check->data)
             {
                 ft_error(head);
-                return; // ft_error fonksiyonu zaten çıkış yapıyor
+                return;
             }
             check = check->next;
         }

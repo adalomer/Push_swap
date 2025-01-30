@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omadali <adalomer60@gmail.com>             +#+  +:+       +#+        */
+/*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 01:35:09 by omadali           #+#    #+#             */
-/*   Updated: 2025/01/30 03:36:32 by omadali          ###   ########.fr       */
+/*   Updated: 2025/01/30 23:34:01 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,3 +86,17 @@ void ft_index(t_stack **head)
     }
 }
 
+void	ft_clear(t_stack **a, t_stack **b)
+{
+	while ((*a)) 
+	{
+        t_stack *temp = (*a);
+        (*a) = (*a)->next;
+        free(temp);
+    }
+	while ((*b)) {
+        t_stack *temp = (*b);
+        (*b) = (*b)->next;
+        free(temp);
+    }
+}
