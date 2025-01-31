@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 01:36:10 by omadali           #+#    #+#             */
-/*   Updated: 2025/01/31 00:51:06 by omadali          ###   ########.fr       */
+/*   Updated: 2025/01/31 02:55:15 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,7 @@ int	ft_validate_and_fill_stack(int argc, char **argv, t_stack **a)
 	}
 	if ((ft_has_duplicates((*a))))
 	{
-		ft_put_error();
-		ft_clear(a, NULL);
+		ft_error(a);
 		return (1);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 23:36:41 by omadali           #+#    #+#             */
-/*   Updated: 2025/01/31 02:44:04 by omadali          ###   ########.fr       */
+/*   Updated: 2025/01/31 02:47:44 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	ft_is_valid_int(char *str)
 			sign = -1;
 		i++;
 	}
+	if (str[i] == '\0')
+		return (0);
 	while (str[i])
 	{
 		result = result * 10 + (str[i] - '0');
