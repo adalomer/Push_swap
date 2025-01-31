@@ -6,14 +6,12 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 01:36:10 by omadali           #+#    #+#             */
-/*   Updated: 2025/01/31 02:55:15 by omadali          ###   ########.fr       */
+/*   Updated: 2025/01/31 03:11:01 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 
 int	ft_createnode(t_stack **a, int value)
 {
@@ -23,7 +21,7 @@ int	ft_createnode(t_stack **a, int value)
 	new_node = (t_stack *)malloc(sizeof(t_stack));
 	if (new_node == NULL)
 	{
-		write(2, "Error\n", 6);
+		ft_error(a);
 		return (0);
 	}
 	new_node->data = value;
