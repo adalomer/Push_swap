@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: omadali <adalomer60@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 01:36:10 by omadali           #+#    #+#             */
-/*   Updated: 2025/01/31 03:11:01 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/03 18:21:04 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 int	ft_createnode(t_stack **a, int value)
 {
@@ -55,6 +56,21 @@ void	ft_free_split(char **split)
 	}
 	free(split);
 }
+int	ft_control(char *a)
+{
+	int b;
+
+	b = 0;
+	if (!a)
+		return (1);
+	while(a[b])
+	{
+		if(a[b] != 32)
+			return (0);
+		b++;
+	}
+	return (1);
+}
 
 int	ft_process_split(char **split, t_stack **a)
 {
@@ -84,6 +100,8 @@ int	ft_validate_and_fill_stack(int argc, char **argv, t_stack **a)
 	i = 1;
 	while (i < argc)
 	{
+		if(ft_control(argv[i]))
+			ft_error(a);
 		split = ft_split(argv[i], ' ');
 		if (!split)
 			return (ft_error(a), 1);
