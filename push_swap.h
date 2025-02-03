@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: omadali <adalomer60@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 23:08:31 by omadali           #+#    #+#             */
-/*   Updated: 2025/01/31 02:08:13 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/03 18:25:07 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,5 @@ int		ft_has_duplicates(t_stack *stack);
 int		ft_is_valid_int(char *str);
 void	ft_put_error(void);
 int		is_sorted_order(t_stack **s);
+int		ft_control(char *a);
 #endif

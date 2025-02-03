@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: omadali <adalomer60@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 23:36:41 by omadali           #+#    #+#             */
-/*   Updated: 2025/01/31 02:47:44 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/03 18:26:11 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,20 @@ int	ft_has_duplicates(t_stack *stack)
 		current = current->next;
 	}
 	return (0);
+}
+
+int	ft_control(char *a)
+{
+	int	b;
+
+	b = 0;
+	if (!a)
+		return (1);
+	while (a[b])
+	{
+		if (a[b] != 32)
+			return (0);
+		b++;
+	}
+	return (1);
 }
